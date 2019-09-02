@@ -1,0 +1,38 @@
+<% include ../partials/header %>
+
+    
+
+<header class="jumbotron">
+    <div class="container"> <!--this div is for spacing for text within jumbotron-->
+        <h1><span class="glyphicon glyphicon-tent" aria-hidden="true"></span>Welcome to YelpCamp</h1>
+        <br>
+        <p>
+                <a class="btn btn-primary btn-lg" href="/campgrounds/new">Add new Campground</a>
+        </p>
+    </div>
+</header>
+
+
+<div class="row text-center" style="display:flex; flex-wrap: wrap"> <!-- this flex wrap is for adjusting multiple images and wrap each img width based on available  space-->
+            <% campgrounds.forEach(function(camp){ %> <!--dekh behen chod campgrounds is the array of objects u got back from DB and camp is each object in that array-->
+                <div class= "col-md-3 col-sm-6">
+                    <div class="thumbnail"> <!--this thumbnail is for spacing around images..automatic-->   
+                        <img src= "<%= camp.image %>">
+                        <div class="caption">
+                            <h4><%= camp.name %></h4>
+                        </div>
+                        <p>
+                            <a href="/campgrounds/<%= camp._id %>" class="btn btn-primary">More Info</a>
+                            <!-- so once u render this page all this code is run and for every more info button the respective campsite's id is added to path and whenever u click that more info button u redirected to that /:id request and that fuumction is run-->
+                        </p>
+                    </div>
+            
+                </div>
+            <%});%>
+        
+    </div>
+</div>
+
+
+<% include ../partials/footer %>
+
